@@ -1,6 +1,6 @@
 module codeberg.org/emersion/soju
 
-go 1.24.0
+go 1.26.0
 
 require (
 	codeberg.org/emersion/go-scfg v0.1.0
