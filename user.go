@@ -2,9 +2,6 @@ package soju
 
 import (
 	"context"
-	"crypto/sha256"
-	"encoding/binary"
-	"encoding/hex"
 	"errors"
 	"fmt"
 	"math/big"
@@ -214,10 +211,11 @@ func userIdent(u *database.User) string {
 	// For privacy reasons, make sure it doesn't expose any meaningful user
 	// metadata. We just use the base64-encoded hashed ID, so that people don't
 	// start relying on the string being an integer or following a pattern.
-	var b [64]byte
-	binary.LittleEndian.PutUint64(b[:], uint64(u.ID))
-	h := sha256.Sum256(b[:])
-	return hex.EncodeToString(h[:16])
+	// var b [64]byte
+	// binary.LittleEndian.PutUint64(b[:], uint64(u.ID))
+	// h := sha256.Sum256(b[:])
+	// return hex.EncodeToString(h[:16])
+	return u.Username
 }
 
 func (net *network) runConn(ctx context.Context) error {
